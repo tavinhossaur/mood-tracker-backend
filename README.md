@@ -1,6 +1,6 @@
 # SpectrumMoodTracker (backend)
 
-Servidor backend para o aplicativo mobile SpectrumMoodTracker.
+Backend server for SpectrumMoodTracker mobile application.
 
 ## Database specifications
 
