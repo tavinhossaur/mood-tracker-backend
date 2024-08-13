@@ -1,7 +1,7 @@
 {
   "name": "spectrum-mood-tracker-backend",
   "version": "1.0.0",
-  "description": "Servidor backend para a aplicação mobile SpectrumMoodTracker.",
+  "description": "Backend server for SpectrumMoodTracker mobile application.",
   "main": "server.js",
   "author": "Octávio Barassa | Yuri Dias | Guilherme Leite | Luan Tavares",
   "license": "ISC",
