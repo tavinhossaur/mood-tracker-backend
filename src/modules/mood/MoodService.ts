@@ -5,11 +5,24 @@ import { HttpStatusCode } from 'axios';
 import Error from '../../error/error';
 
 class MoodService {
+    /**
+     * Cria um novo registro de mood.
+     * @param mood IMoodRequest -> Objeto contendo os dados do mood a serem registrados.
+     * @param id string -> ID do usuário que está registrando o mood.
+     * @returns Promise -> Promessa do banco de dados com o registro criado.
+    */
     public async createMoodRegister(mood: IMoodRequest, id: string) {
         const moodRepository = new MoodRepository();
         return moodRepository.insertMoodRegister(mood, id);
     }
 
+    /**
+     * Recupera todos os registros de um usuário, com a opção de limitar a quantidade de resultados.
+     * Os registros são reduzidos em uma resposta formatada com ID, data e nota.
+     * @param user_id string -> ID do usuário cujos registros serão recuperados.
+     * @param limit number -> (Opcional) Número máximo de registros a serem retornados.
+     * @returns Promise -> Promessa do banco de dados com uma lista formatada de registros.
+    */
     public async getAllMoods(user_id: string, limit?: number) {
         const moodRepository = new MoodRepository();
 
@@ -22,6 +35,11 @@ class MoodService {
         }, [])
     }
 
+    /**
+     * Recupera os registros da última semana de um usuário e agrupa-os pelo ID, contando a quantidade de vezes que cada mood foi registrado.
+     * @param user_id string -> ID do usuário cujos registrosserão recuperados.
+     * @returns Promise -> Promessa do banco de dados com uma lista de objetos contendo o ID do mood e a quantidade de vezes que foi registrado.
+    */
     public async getMoodsFromLastWeek(user_id: string) {
         const moodRepository = new MoodRepository();
 
@@ -35,6 +53,11 @@ class MoodService {
         }, [])
     }
 
+    /**
+     * Recupera os registros do último semestre de um usuário e os agrupa por mês, contando a quantidade de vezes que cada mood foi registrado por mês.
+     * @param user_id string -> ID do usuário cujos registros serão recuperados.
+     * @returns Promise -> Promessa do banco de dados com uma lista de objetos, onde cada objeto representa um mês e contém um array de moods registrados nesse mês.
+    */
     public async getMoodsFromLastSemester(user_id: string) {
         const moodRepository = new MoodRepository();
 
@@ -62,6 +85,14 @@ class MoodService {
         }, []);
     }
 
+    /**
+     * Verifica se o registro existe antes de tentar atualizá-lo, 
+     * e caso exista, atualiza a nota associada ao mood_id.
+     * @param mood_id string -> ID do registro cuja nota será atualizada.
+     * @param text_content string -> Novo conteúdo textual da nota.
+     * @returns Promise -> Promessa do banco de dados com a atualização da nota do registro.
+     * @throws Error -> Lança um erro se o registro não existir.
+    */
     public async updateMoodNote(mood_id: string, text_content: string) {
         const moodRepository = new MoodRepository();
 
@@ -70,6 +101,13 @@ class MoodService {
         return moodRepository.updateNoteRegister(mood_id, text_content);
     }
 
+    /**
+     * Verifica se o registro existe antes de tentar deletá-lo, 
+     * e caso exista, deleta a nota associada ao mood_id.
+     * @param mood_id string -> ID do registro a ser deletado.
+     * @returns Promise -> Promessa do banco de dados com a exclusão do registro.
+     * @throws Error -> Lança um erro se o registro não existir.
+    */
     public async deleteMoodRegister(mood_id: string) {
         const moodRepository = new MoodRepository();
 

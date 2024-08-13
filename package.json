@@ -1,9 +1,9 @@
 {
-  "name": "mood-tracker-backend",
+  "name": "spectrum-mood-tracker-backend",
   "version": "1.0.0",
-  "description": "Servidor backend para a aplicação mobile MoodTracker.",
+  "description": "Servidor backend para a aplicação mobile SpectrumMoodTracker.",
   "main": "server.js",
-  "author": "Octávio Barassa | Yuri Dias",
+  "author": "Octávio Barassa | Yuri Dias | Guilherme Leite | Luan Tavares",
   "license": "ISC",
   "scripts": {
     "dev:server": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",

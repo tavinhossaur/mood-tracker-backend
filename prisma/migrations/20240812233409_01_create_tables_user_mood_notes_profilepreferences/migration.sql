@@ -4,6 +4,7 @@ CREATE TABLE "User" (
     "username" VARCHAR(255) NOT NULL,
     "password" VARCHAR(60) NOT NULL,
     "email" VARCHAR(255) NOT NULL,
+    "streak" JSON,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "profile_preferences_id" UUID,
 
